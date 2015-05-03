@@ -1,0 +1,14 @@
+target/
+tmp/
+
+.classpath
+.settings/
+.project
+
+*.iml
+.idea/
+
+.cache
+
+dump.rdb
+logs/

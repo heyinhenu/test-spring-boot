@@ -1,0 +1,26 @@
+{{# partial "more-css" }}
+<link href="/public/css/main.css" rel="stylesheet">
+{{/partial}} {{# partial "content" }}
+<p>version-11: hello, {{now}}</p>
+
+<p>Last accessedtime: {{lastAccessedTime}}</p>
+<p>Session Id: {{sessionId}}</p>
+
+<p>creationTime: {{creationTime}}</p>
+<p>session maxInactiveInterval: {{session.maxInactiveInterval}}
+<ul>
+  <li><a href="/javaslang">javaslang test</a></li>
+  <li><a href="/test/libs">libs test</a></li>
+  <li><a href="/test/json">Json test</a></li>
+  <li><a href="/test/redirect">Redirect test</a></li>
+  <li><a href="/test/scala">Scala test</a></li>
+  <li><a href="/test/scala/handlebars">test scalahandlebars</a></li>
+</ul>
+<hr />
+
+<ul>
+  <li><a href="https://github.com/allegro/handlebars-spring-boot-starter" target="_blank">handlebars-spring-boot-starter</a></li>
+</ul>
+{{/partial}} {{# partial "more-js" }}
+<script src="/webjars/lodash/3.6.0/lodash.min.js"></script>
+{{/partial}} {{> layout/application}}
