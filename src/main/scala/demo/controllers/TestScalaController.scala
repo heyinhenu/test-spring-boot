@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.ui.Model
 import org.springframework.web.servlet.ModelAndView
 
-import demo.ext.ScalaBaseController
+import demo.ext.BaseController
 
 @Controller
 @RequestMapping(Array("/test/scala"))
-class TestScalaController extends ScalaBaseController {
+class TestScalaController extends BaseController {
 
   @RequestMapping(Array(""))
   @ResponseBody
