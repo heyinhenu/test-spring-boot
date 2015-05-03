@@ -1,0 +1,14 @@
+{{# partial "content" }}
+
+<code>{{json users}}</code>
+
+<table class="table" id="jstmp">
+{{embedded "test/scala/_row"}}
+</table>
+{{/partial}} {{# partial "more-js" }}
+<script>
+    $.getJSON("/test/scala/json/data", function(ret) {
+    	main.handlebarsView("#test-scala-_row-hbs-html", "#jstmp", ret);
+    });
+</script>
+{{/partial}} {{> layout/application}}
