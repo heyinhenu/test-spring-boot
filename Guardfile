@@ -26,16 +26,12 @@
 # Add files and commands to this file, like the example:
 #   watch(%r{file/path}) { `command(s)` }
 #
-guard :shell do
-  watch(/(.*).(java|scala)/) {|m|  `mvn compile` }
-end
 
-guard 'livereload' do
-  #watch(%r{app/views/.+\.(erb|haml|slim)$})
-  #watch(%r{app/helpers/.+\.rb})
-  #watch(%r{public/.+\.(css|js|html)})
-  #watch(%r{config/locales/.+\.yml})
+##guard :shell do
+##  watch(/(.*).(java|scala)/) {|m|  `mvn compile` }
+##end
+
+guard 'livereload', grace_period: 0.8 do
   watch(/(.*).class/)
-  # Rails Assets Pipeline
-  #watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+  watch(%r{(.*)\.(css|js|html)})
 end

@@ -19,6 +19,7 @@ public class WelcomeController extends BaseController {
 
         request.getSession().setAttribute("now", new Date().toString());
 
+        model.put("version", "1.1.2111");
         model.put("now", new Date());
         model.put("lastAccessedTime", request.getSession().getLastAccessedTime());
         model.put("sessionId", request.getSession().getId());
