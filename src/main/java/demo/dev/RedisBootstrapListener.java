@@ -1,13 +1,10 @@
 package demo.dev;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
 
-import redis.embedded.RedisServer;
 import demo.utils.Utils;
 
 public class RedisBootstrapListener implements ApplicationListener<ApplicationStartedEvent> {
@@ -15,7 +12,7 @@ public class RedisBootstrapListener implements ApplicationListener<ApplicationSt
     private static Logger LOG = LoggerFactory.getLogger(RedisBootstrapListener.class);
     private static final int DEFAULT_REDIS_PORT = 6379;
 
-    private RedisServer redisServer = null;
+    private MockRedisServer mockRedisServer = new MockRedisServer(DEFAULT_REDIS_PORT);
 
     public RedisBootstrapListener() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -33,21 +30,14 @@ public class RedisBootstrapListener implements ApplicationListener<ApplicationSt
 
         LOG.info("start redis server...");
         try {
-            redisServer = new RedisServer(DEFAULT_REDIS_PORT);
-            if (!redisServer.isActive()) {
-                redisServer.start();
-                LOG.info("Redis start");
-            }
-        } catch (IOException e) {
+            mockRedisServer.start();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void destroy() {
-        if (redisServer != null) {
-            LOG.info("Redis stop");
-            redisServer.stop();
-            redisServer = null;
-        }
+        mockRedisServer.stop();
+        LOG.info("Redis stop");
     }
 }
