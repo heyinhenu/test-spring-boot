@@ -73,8 +73,10 @@ namespace :dist do
     start_content = <<-eos
 #!/bin/bash
 
-java -Xmx1G -jar lib/#{NAME}-#{VERSION}.jar
+java -Xmx1G -Drun.mode=prod -jar lib/#{NAME}-#{VERSION}.jar
     eos
     File.write('dist/start.sh', start_content)
+    
+    sh 'chmod +x dist/start.sh'
   end
 end

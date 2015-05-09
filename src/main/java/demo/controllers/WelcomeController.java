@@ -11,7 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import demo.ext.BaseController;
-import demo.ext.SpringAppScope;
+import demo.ext.SpringApp;
 
 @Controller
 public class WelcomeController extends BaseController {
@@ -31,7 +31,7 @@ public class WelcomeController extends BaseController {
         model.put("sessionId", request.getSession().getId());
         model.put("creationTime", request.getSession().getCreationTime());
         model.put("session", request.getSession());
-        model.put("runMode", SpringAppScope.runMode());
+        model.put("runMode", SpringApp.runMode());
         model.put("activeProfiles", env.getActiveProfiles());
 
         return "welcome";
