@@ -2,7 +2,13 @@
 <link href="/public/css/main.css" rel="stylesheet">
 {{/partial}} {{# partial "content" }}
 
-<p>version: {{version}} - 112</p>
+<p>RunMode: {{runMode}}</p>
+<p>activeProfiles:
+ {{#activeProfiles}}
+ {{.}}, 
+ {{/activeProfiles}}</p>
+
+<p>version: {{version}} - 11234</p>
 <p>now: hello, {{now}}</p>
 
 <p>Last accessedtime: {{lastAccessedTime}}</p>
@@ -10,6 +16,7 @@
 
 <p>creationTime: {{creationTime}}</p>
 <p>session maxInactiveInterval: {{session.maxInactiveInterval}}
+
 <ul>
   <li><a href="/javaslang">javaslang test</a></li>
   <li><a href="/test/libs">libs test</a></li>

@@ -1,3 +1,6 @@
+NAME = 'test-springboot'
+VERSION = '0.0.1-SNAPSHOT'
+
 task :default do
   sh 'rake -T'
 end
@@ -46,5 +49,32 @@ namespace :deps do
   desc "deps tree"
   task :tree do
     sh 'mvn dependency:tree'
+  end
+end
+
+namespace :dist do
+
+  desc "dist clean"
+  task :clean do 
+    sh 'rm -rf dist'
+  end
+  
+  task :prepare do 
+    sh 'mkdir -p dist/lib'
+    sh 'mkdir -p dist/config'
+  end
+
+  desc "dist bin"
+  task :bin => %w[package dist:clean dist:prepare] do
+    jarfile = "target/#{NAME}-#{VERSION}.jar"
+    sh "cp #{jarfile} dist/lib"
+    sh 'cp src/main/resources/application.properties dist/config'
+    
+    start_content = <<-eos
+#!/bin/bash
+
+java -Xmx1G -jar lib/#{NAME}-#{VERSION}.jar
+    eos
+    File.write('dist/start.sh', start_content)
   end
 end

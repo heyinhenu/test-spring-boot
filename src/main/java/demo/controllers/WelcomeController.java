@@ -4,14 +4,20 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import demo.ext.BaseController;
+import demo.ext.SpringAppScope;
 
 @Controller
 public class WelcomeController extends BaseController {
+
+    @Autowired
+    private Environment env;
 
     @RequestMapping(value = "/")
     public String index(HttpServletRequest request, ModelMap model) {
@@ -25,6 +31,9 @@ public class WelcomeController extends BaseController {
         model.put("sessionId", request.getSession().getId());
         model.put("creationTime", request.getSession().getCreationTime());
         model.put("session", request.getSession());
+        model.put("runMode", SpringAppScope.runMode());
+        model.put("activeProfiles", env.getActiveProfiles());
+
         return "welcome";
     }
 }
