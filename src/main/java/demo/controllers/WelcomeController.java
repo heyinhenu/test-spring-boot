@@ -31,9 +31,20 @@ public class WelcomeController extends BaseController {
         model.put("sessionId", request.getSession().getId());
         model.put("creationTime", request.getSession().getCreationTime());
         model.put("session", request.getSession());
+
         model.put("runMode", SpringApp.runMode());
         model.put("activeProfiles", env.getActiveProfiles());
+        model.put("hotReload", hotReload());
 
         return "welcome";
+    }
+
+    private boolean hotReload() {
+        try {
+            Class.forName("org.springsource.loaded.agent.SpringLoadedAgent");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

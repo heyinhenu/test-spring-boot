@@ -80,3 +80,13 @@ java -Xmx1G -Drun.mode=prod -jar lib/#{NAME}-#{VERSION}.jar
     sh 'chmod +x dist/start.sh'
   end
 end
+
+namespace :tool do
+  
+  desc "tool javaagent"
+  task :javaagent do 
+    path = "~/.m2/repository/org/springframework/springloaded/1.2.3.RELEASE/springloaded-1.2.3.RELEASE.jar"
+    puts "-javaagent:#{File.expand_path(path)} -noverify"
+  end
+end
+

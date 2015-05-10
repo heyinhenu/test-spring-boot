@@ -7,7 +7,7 @@
 </table>
 {{/partial}} {{# partial "more-js" }}
 <script>
-    $.getJSON("/test/scala/json/data", function(ret) {
+    $.getJSON("/test/scala/json/data?t={{t}}", function(ret) {
     	main.handlebarsView("#test-scala-_row-hbs-html", "#jstmp", ret);
     });
 </script>

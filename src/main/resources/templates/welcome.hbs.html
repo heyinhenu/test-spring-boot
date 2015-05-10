@@ -2,11 +2,8 @@
 <link href="/public/css/main.css" rel="stylesheet">
 {{/partial}} {{# partial "content" }}
 
-<p>RunMode: {{runMode}}</p>
-<p>activeProfiles:
- {{#activeProfiles}}
- {{.}}, 
- {{/activeProfiles}}</p>
+<p>RunMode: {{runMode}} , Hot Reload: {{hotReload}}</p>
+<p>activeProfiles: {{#activeProfiles}} {{.}}, {{/activeProfiles}}</p>
 
 <p>version: {{version}} - 11234</p>
 <p>now: hello, {{now}}</p>
@@ -16,7 +13,6 @@
 
 <p>creationTime: {{creationTime}}</p>
 <p>session maxInactiveInterval: {{session.maxInactiveInterval}}
-
 <ul>
   <li><a href="/javaslang">javaslang test</a></li>
   <li><a href="/test/libs">libs test</a></li>
@@ -25,6 +21,7 @@
   <li><a href="/test/scala">Scala test</a></li>
   <li><a href="/test/scala/handlebars">test scala handlebars</a></li>
   <li><a href="/test/scala/json">test scala json</a></li>
+  <li><a href="/test/scala/json?t=scala">test scala json native</a></li>
 </ul>
 <hr />
 
