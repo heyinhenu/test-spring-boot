@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication
 
 import demo.ext.AppTask
 import demo.ext.Logable
-import demo.utils.Utils
 
 class DevModeTask extends AppTask with Logable {
 

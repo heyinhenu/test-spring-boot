@@ -71,11 +71,14 @@
     </pluginRepositories>
 
     <dependencies>
+
+        <!-- platform -->
         <dependency>
             <artifactId>scala-library</artifactId>
             <groupId>org.scala-lang</groupId>
             <version>${scala.version}</version>
         </dependency>
+        <!-- end platform -->
 
         <!-- for spring boot -->
         <dependency>
@@ -191,8 +194,28 @@
             <artifactId>jackson-module-scala_2.11</artifactId>
             <version>2.5.2</version>
 
+            <exclusions>
+                <exclusion>
+                    <artifactId>scala-library</artifactId>
+                    <groupId>org.scala-lang</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- end utils -->
+
+        <!-- scala utils -->
+        <dependency>
+            <groupId>com.jsuereth</groupId>
+            <artifactId>scala-arm_2.11</artifactId>
+            <version>1.4</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>scala-library</artifactId>
+                    <groupId>org.scala-lang</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- end scala utils -->
 
         <!-- webjars -->
         <dependency>

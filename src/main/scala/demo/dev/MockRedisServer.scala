@@ -2,7 +2,8 @@ package demo.dev
 
 import demo.ext.Logable
 import redis.embedded.RedisServer
-import demo.utils.Utils
+
+import demo.util
 
 trait MockRedisServerable {
   def start(): Unit
@@ -15,7 +16,7 @@ class MockRedisServer(val port: Int) extends MockRedisServerable with Logable {
   val redisServer = new RedisServer(port)
 
   override def start(): Unit = {
-    if (!Utils.availablePort(port)) {
+    if (!util.availablePort(port)) {
       logger.warn("端口{}已经被占用！", port)
       return
     } else if (!redisServer.isActive) {
