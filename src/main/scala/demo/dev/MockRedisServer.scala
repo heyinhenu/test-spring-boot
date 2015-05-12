@@ -18,7 +18,6 @@ class MockRedisServer(val port: Int) extends MockRedisServerable with Logable {
   override def start(): Unit = {
     if (!util.availablePort(port)) {
       logger.warn("端口{}已经被占用！", port)
-      return
     } else if (!redisServer.isActive) {
       redisServer.start()
       logger.info("Mock Redis start")
