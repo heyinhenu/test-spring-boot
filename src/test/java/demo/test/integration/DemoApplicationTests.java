@@ -1,4 +1,4 @@
-package demo;
+package demo.test.integration;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -9,6 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import demo.DemoApplication;
 import demo.dev.MockRedisServer;
 import demo.ext.RunMode;
 
