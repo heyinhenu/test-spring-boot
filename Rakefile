@@ -10,14 +10,16 @@ task :clean do
   sh 'mvn clean'
 end
 
-desc "run (on dev mode)"
-task :run do
-  sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev -Dspring.profiles.active=dev" -Drun.arguments="--spring.profiles.active=dev"'
-end
-
-desc "run (on prod mode)"
-task :start do
-  sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx1g -noverify -Drun.mode=prod -Dspring.profiles.active=prod"'
+namespace :server do
+  desc "run (on dev mode)"
+  task :run do
+    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev -Dspring.profiles.active=dev" -Drun.arguments="--spring.profiles.active=dev"'
+  end
+  
+  desc "run (on prod mode)"
+  task :start do
+    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx1g -noverify -Drun.mode=prod -Dspring.profiles.active=prod"'
+  end
 end
 
 desc "package"
