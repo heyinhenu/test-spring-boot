@@ -25,6 +25,7 @@ class MockRedisServer(val port: Int) extends MockRedisServerable with Logable {
       Runtime.getRuntime.addShutdownHook(new Thread() {
         override def run(): Unit = {
           if (redisServer.isActive) {
+            logger.info("Stop mock Redis Server")
             redisServer.stop()
           }
         }
