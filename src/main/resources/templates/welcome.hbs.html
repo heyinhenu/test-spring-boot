@@ -1,8 +1,6 @@
 {{# partial "more-css" }}
 <link href="/public/css/main.css" rel="stylesheet">
-{{/partial}}
-
-{{# partial "content" }}
+{{/partial}} {{# partial "content" }}
 
 <p>RunMode: {{runMode}} , Hot Reload: {{hotReload}}</p>
 <p>activeProfiles: {{#activeProfiles}} {{.}}, {{/activeProfiles}}</p>
@@ -24,6 +22,7 @@
   <li><a href="/test/scala/handlebars">test scala handlebars</a></li>
   <li><a href="/test/scala/json">test scala json</a></li>
   <li><a href="/test/scala/json?t=scala">test scala json native</a></li>
+  <li><a href="/test/handlebars">test handlebars</a></li>
   <li><a href="/ping">Tool ping</a></li>
 </ul>
 

@@ -1,0 +1,9 @@
+{{# partial "content" }}
+
+<div>Handlebars Helpers:</div>
+{{#env}}
+<p>RunMode: {{runMode}} , Hot Reload: {{hotReload}}</p>
+<p>activeProfiles: {{#activeProfiles}} {{.}}, {{/activeProfiles}}</p>
+{{/env}} 
+{{/partial}} 
+{{> layout/application}}
