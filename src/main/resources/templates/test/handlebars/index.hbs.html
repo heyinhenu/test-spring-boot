@@ -4,6 +4,13 @@
 {{#env}}
 <p>RunMode: {{runMode}} , Hot Reload: {{hotReload}}</p>
 <p>activeProfiles: {{#activeProfiles}} {{.}}, {{/activeProfiles}}</p>
-{{/env}} 
+{{/env}}
+
+
+<div>Format date:</div>
+
+<p>{{formatDate now "yyyy-MM-dd HH:mm:ss SSS"}}</p>
+<p>{{formatDate now}}</p>
+
 {{/partial}} 
 {{> layout/application}}
