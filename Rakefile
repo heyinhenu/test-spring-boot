@@ -13,12 +13,13 @@ end
 namespace :server do
   desc "run (on dev mode)"
   task :run do
-    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev -Dspring.profiles.active=dev" -Drun.arguments="--spring.profiles.active=dev"'
+    # sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev -Dspring.profiles.active=dev" -Drun.arguments="--spring.profiles.active=dev"'
+    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev"'
   end
   
   desc "run (on prod mode)"
   task :start do
-    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx1g -noverify -Drun.mode=prod -Dspring.profiles.active=prod"'
+    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx1g -noverify -Drun.mode=prod"'
   end
 end
 
@@ -29,7 +30,8 @@ end
 
 desc "package and run on prod mode"
 task :prod => %w[package] do
-  sh 'java -Xmx1g -noverify -Drun.mode=prod -Dspring.profiles.active=prod -jar target/test-springboot-0.0.1-SNAPSHOT.jar'
+  # sh 'java -Xmx1g -noverify -Drun.mode=prod -Dspring.profiles.active=prod -jar target/test-springboot-0.0.1-SNAPSHOT.jar'
+  sh 'java -Xmx1g -noverify -Drun.mode=prod -jar target/test-springboot-0.0.1-SNAPSHOT.jar'
 end
 
 desc "test"
