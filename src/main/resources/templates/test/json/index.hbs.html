@@ -5,15 +5,14 @@ hello2, {{# user}} {{name}} {{/user}}
 JSON:
 <code>{{json user}}</code>
 
-<table id="jstmp" class="table">
-{{embedded "test/json/_row"}}
+<table id="jstmp" class="table">{{embedded "test/json/_row"}}
 </table>
 {{/partial}} {{# partial "more-js" }}
 <script>
-	$.getJSON("/test/json/data", function(ret) {
-		console.log(JSON.stringify(ret));
-		
-		main.handlebarsView("#test-json-_row-hbs-html", "#jstmp", ret);
-	});
+    $.getJSON("/test/json/data", function(ret) {
+        console.log(JSON.stringify(ret));
+
+        main.handlebarsView("#test-json-_row-hbs-html", "#jstmp", ret);
+    });
 </script>
 {{/partial}} {{> layout/application}}
