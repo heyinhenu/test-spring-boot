@@ -15,5 +15,10 @@ $ guard init shell livereload
 #### Run
 
 ```
-rake run
+$ rake server:run
 ```
+
+```
+$ guard
+```
+
