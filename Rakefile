@@ -13,6 +13,9 @@ end
 namespace :server do
   desc "run (on dev mode)"
   task :run do
+    Thread.new do
+      sh 'guard'
+    end
     # sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev -Dspring.profiles.active=dev" -Drun.arguments="--spring.profiles.active=dev"'
     sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev"'
   end
@@ -85,8 +88,15 @@ java -Xmx1G -Drun.mode=prod -jar lib/#{NAME}-#{VERSION}.jar
   end
 end
 
+namespace :dev do
+  desc 'init dev'
+  task :init do
+    sh 'gem install guard'
+    sh 'gem install guard-livereload'
+  end
+end
+
 namespace :tool do
-  
   desc "tool javaagent"
   task :javaagent do 
     path = "~/.m2/repository/org/springframework/springloaded/1.2.3.RELEASE/springloaded-1.2.3.RELEASE.jar"
