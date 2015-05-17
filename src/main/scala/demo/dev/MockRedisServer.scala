@@ -15,7 +15,7 @@ class MockRedisServer(val port: Int) extends MockRedisServerable with Logable {
 
   val redisServer = new RedisServer(port)
 
-  override def start(): Unit = {
+  override def start(): Unit =
     if (!util.availablePort(port)) {
       logger.warn("端口{}已经被占用！", port)
     } else if (!redisServer.isActive) {
@@ -31,12 +31,10 @@ class MockRedisServer(val port: Int) extends MockRedisServerable with Logable {
         }
       })
     }
-  }
 
-  override def stop(): Unit = {
+  override def stop(): Unit =
     if (redisServer.isActive) {
       redisServer.stop()
       logger.info("Mock Redis stop")
     }
-  }
 }

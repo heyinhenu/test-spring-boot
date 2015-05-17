@@ -34,8 +34,8 @@ class HandlebarsHelperConfig extends Logable {
 
     val helpers = ctx.getBeansWithAnnotation(classOf[HandlebarsHelper])
     logger.info("registerHelper:{}", helpers.size())
-    for (hs <- helpers.values().asScala) {
-      val helper = hs.asInstanceOf[Helper[_]]
+    for (h <- helpers.values().asScala) {
+      val helper = h.asInstanceOf[Helper[_]]
       handlebarsViewResolver.registerHelper(getHelperName(helper), helper)
     }
   }

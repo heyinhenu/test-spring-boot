@@ -25,7 +25,7 @@ public class DemoApplication {
     private static final Logger LOG = LoggerFactory.getLogger(DemoApplication.class);
 
     public static void main(final String[] args) {
-        final App app = SpringApp.instance();
+        final App app = SpringApp.INSTANCE();
         displayInfo(app.runMode(), args);
 
         final SpringApplication application = new SpringApplication(DemoApplication.class);

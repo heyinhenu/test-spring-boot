@@ -12,7 +12,5 @@ class ToolsController extends BaseController {
 
   @RequestMapping(value = Array("/ping"), produces = Array("text/plain"))
   @ResponseBody
-  def ping() = {
-    "pong"
-  }
+  def ping() = "pong"
 }

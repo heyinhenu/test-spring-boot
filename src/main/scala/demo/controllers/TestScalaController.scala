@@ -46,13 +46,11 @@ class TestScalaController extends BaseController {
 
   @RequestMapping(Array("/json/data"))
   @ResponseBody
-  def jsonData(@RequestParam(value = "t", defaultValue = "java") t: String) = {
-    t match {
-      case "java" => List(User("itang"), User("tqibm", 34)).asJava
-      case _ => {
-        logger.debug("type: scala")
-        List(UserNative("itang"), UserNative("tqibm", 34))
-      }
+  def jsonData(@RequestParam(value = "t", defaultValue = "java") t: String) = t match {
+    case "java" => List(User("itang"), User("tqibm", 34)).asJava
+    case _ => {
+      logger.debug("type: scala")
+      List(UserNative("itang"), UserNative("tqibm", 34))
     }
   }
 }

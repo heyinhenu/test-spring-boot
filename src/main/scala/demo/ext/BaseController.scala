@@ -40,6 +40,6 @@ abstract class BaseController extends Logable {
   }
 
   protected def redirect(path: String): String = {
-    "redirect:" + path;
+    "redirect:" + path
   }
 }

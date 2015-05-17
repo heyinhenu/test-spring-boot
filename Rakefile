@@ -13,16 +13,16 @@ end
 namespace :server do
   desc "run (on dev mode)"
   task :run do
-    Thread.new do
-      sh 'guard'
-    end
-    # sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev -Dspring.profiles.active=dev" -Drun.arguments="--spring.profiles.active=dev"'
-    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx512m -noverify -Drun.mode=dev"'
+    #Thread.new do
+    #  sh 'guard'
+    #end
+    # sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx1g -noverify -Drun.mode=dev -Dspring.profiles.active=dev" -Drun.arguments="--spring.profiles.active=dev"'
+    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx1g -noverify -Drun.mode=dev"'
   end
   
   desc "run (on prod mode)"
   task :start do
-    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx1g -noverify -Drun.mode=prod"'
+    sh 'mvn spring-boot:run -Drun.jvmArguments="-Xmx2g -noverify -Drun.mode=prod"'
   end
 end
 

@@ -16,5 +16,5 @@ object SpringApp extends App with Logable {
     }
   }
 
-  val instance = this
+  val INSTANCE = this
 }

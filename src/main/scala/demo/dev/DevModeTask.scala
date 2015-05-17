@@ -7,7 +7,7 @@ import demo.ext.Logable
 
 class DevModeTask extends AppTask with Logable {
 
-  var redisServer: MockRedisServer = null
+  private var redisServer: MockRedisServer = null
 
   override def init(application: SpringApplication): Unit = {
     val port = 6379
@@ -17,9 +17,8 @@ class DevModeTask extends AppTask with Logable {
     logger.debug("end start mock redis")
   }
 
-  override def stop(): Unit = {
+  override def stop(): Unit =
     if (redisServer != null) {
       redisServer.stop()
     }
-  }
 }

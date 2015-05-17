@@ -9,10 +9,8 @@ import com.fasterxml.jackson.module.scala.DefaultScalaModule
 
 @Configuration
 @ConditionalOnClass(Array(classOf[DefaultScalaModule]))
-class ScalaConfig {
+class JacksonScalaConfig {
 
   @Bean
-  def defaultScalaModule(): Module = {
-    DefaultScalaModule
-  }
+  def defaultScalaModule(): Module = DefaultScalaModule
 }
