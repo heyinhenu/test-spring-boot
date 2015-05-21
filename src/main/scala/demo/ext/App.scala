@@ -1,11 +1,16 @@
 package demo.ext
 
+import org.springframework.boot.SpringApplication
+
 trait App {
   def runMode: RunMode
+
+  def application: SpringApplication
+
+  def run(args: Array[String]): Unit
 }
 
-object SpringApp extends App with Logable {
-
+case class SpringApp(application: SpringApplication) extends App with Logable {
   override val runMode: RunMode = {
     val r = RunMode.fromString(System.getProperty(RunMode.RUN_MODE_KEY))
     if (!r.isPresent) {
@@ -16,5 +21,10 @@ object SpringApp extends App with Logable {
     }
   }
 
-  val INSTANCE = this
+  // init
+  application.setAdditionalProfiles(runMode.toString().toLowerCase())
+
+  override def run(args: Array[String]): Unit = {
+    application.run(args: _*)
+  }
 }

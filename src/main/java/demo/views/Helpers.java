@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import com.github.jknack.handlebars.Options;
 import com.google.common.collect.Maps;
 
+import demo.DemoApplication;
 import demo.ext.HandlebarsHelperSource;
 import demo.ext.JavaLogable;
-import demo.ext.SpringApp;
 
 @Component
 @HandlebarsHelperSource
@@ -23,7 +23,7 @@ public class Helpers implements JavaLogable {
 
     public CharSequence env(Options options) throws IOException {
         Map<String, Object> context = Maps.newHashMap();
-        context.put("runMode", SpringApp.runMode());
+        context.put("runMode", DemoApplication.getApp().runMode());
         context.put("activeProfiles", env.getActiveProfiles());
         context.put("hotReload", hotReload());
 

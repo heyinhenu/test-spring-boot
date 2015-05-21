@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import demo.DemoApplication;
 import demo.ext.BaseController;
-import demo.ext.SpringApp;
 
 @Controller
 public class WelcomeController extends BaseController {
@@ -32,7 +32,7 @@ public class WelcomeController extends BaseController {
         model.put("creationTime", request.getSession().getCreationTime());
         model.put("session", request.getSession());
 
-        model.put("runMode", SpringApp.runMode());
+        model.put("runMode", DemoApplication.getApp().runMode());
         model.put("activeProfiles", env.getActiveProfiles());
         model.put("hotReload", hotReload());
 

@@ -23,22 +23,34 @@ import demo.ext.SpringApp;
 public class DemoApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(DemoApplication.class);
+    private static App app = null;
 
     public static void main(final String[] args) {
-        final App app = SpringApp.INSTANCE();
-        displayInfo(app.runMode(), args);
+        final App app = new SpringApp(new SpringApplication(DemoApplication.class));
 
-        final SpringApplication application = new SpringApplication(DemoApplication.class);
+        displayInfo(app.runMode(), args);
 
         if (app.runMode().isDevMode()) {
             LOG.info("init for dev mode");
-            application.setAdditionalProfiles("dev");
             List<AppTask> ts = Lists.newArrayList(new DevModeTask());
-            ts.stream().forEach(t -> t.init(application));
-        } else {
-            application.setAdditionalProfiles("prod");
+            ts.stream().forEach(t -> t.init(app));
         }
-        application.run(args);
+        
+        DemoApplication.setApp(app);
+
+        app.run(args);
+    }
+
+    public static final App getApp() {
+        if (app == null) {
+            throw new RuntimeException("Don't entry!");
+        }
+        return app;
+    }
+
+    public static final App setApp(final App app) {
+        DemoApplication.app = app;
+        return app;
     }
 
     private static void displayInfo(RunMode runMode, String[] args) {
